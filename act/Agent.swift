@@ -10,17 +10,24 @@ import os.log
 public class Agent : NSObject, AgentMessaging, NSXPCListenerDelegate {
     public static let shared = Agent()
     private let auditSessionIdentifier: au_asid_t
-    private var endpoints = [String:((NSXPCListenerEndpoint?) -> Void, NSXPCListenerEndpoint?)]()
+    private var handshakeEndpoints = [String:((NSXPCListenerEndpoint?) -> Void, NSXPCListenerEndpoint?)]()
     @objc public func connect() {
         
     }
     @objc public func handshake(endpoint: NSXPCListenerEndpoint?, identifier: String, reply: @escaping (NSXPCListenerEndpoint?) -> Void) {
-        if let (otherReply, otherEndpoint) = endpoints.removeValue(forKey: identifier) {
+        if let (otherReply, otherEndpoint) = handshakeEndpoints.removeValue(forKey: identifier) {
             reply(otherEndpoint)
             otherReply(endpoint)
         } else {
-            endpoints[identifier] = (reply, endpoint)
+            handshakeEndpoints[identifier] = (reply, endpoint)
         }
+    }
+    private var publishedEndpoints = [String:NSXPCListenerEndpoint]()
+    @objc public func publish(endpoint: NSXPCListenerEndpoint, identifier: String) {
+        publishedEndpoints[identifier] = endpoint
+    }
+    @objc public func publishedEndpoint(identifier: String, reply: @escaping (NSXPCListenerEndpoint?) -> Void) {
+        reply(publishedEndpoints[identifier])
     }
     @objc public func listener(_ listener: NSXPCListener,
                                shouldAcceptNewConnection newConnection: NSXPCConnection) -> Bool {

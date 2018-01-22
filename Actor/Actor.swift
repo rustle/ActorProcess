@@ -84,7 +84,8 @@ public class Actor<ProxyType> {
         default:
             self.state = .exited(.unexpected)
         }
-        
+        monitor?.unschedule()
+        monitor = nil
     }
     public func terminate() {
         process.terminate()
