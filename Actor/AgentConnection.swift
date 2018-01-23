@@ -66,7 +66,6 @@ public class AgentConnection {
         if !once {
             connection.resume()
             proxy = connection.remoteObjectProxy as? AgentMessaging
-            proxy?.connect()
             once = true
         }
     }

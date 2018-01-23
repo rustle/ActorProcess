@@ -11,9 +11,6 @@ public class Agent : NSObject, AgentMessaging, NSXPCListenerDelegate {
     public static let shared = Agent()
     private let auditSessionIdentifier: au_asid_t
     private var handshakeEndpoints = [String:((NSXPCListenerEndpoint?) -> Void, NSXPCListenerEndpoint?)]()
-    @objc public func connect() {
-        
-    }
     @objc public func handshake(endpoint: NSXPCListenerEndpoint?, identifier: String, reply: @escaping (NSXPCListenerEndpoint?) -> Void) {
         if let (otherReply, otherEndpoint) = handshakeEndpoints.removeValue(forKey: identifier) {
             reply(otherEndpoint)
