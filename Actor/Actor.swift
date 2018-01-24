@@ -13,6 +13,9 @@ public class Actor<ProxyType> {
     public var processIdentifier: Int {
         return Int(process.processIdentifier)
     }
+    public var xpcConnection: NSXPCConnection? {
+        return config.xpcConnection
+    }
     public enum Exit {
         case expected
         case unexpected
@@ -33,9 +36,11 @@ public class Actor<ProxyType> {
     private var monitor: ProcessMonitor?
     private var launchTime: CFAbsoluteTime?
     private var exitTime: CFAbsoluteTime?
-    public init(identifier: String = UUID().uuidString, config: Config<ProxyType>) {
+    private let agentConnection: AgentConnection
+    public init(identifier: String = UUID().uuidString, config: Config<ProxyType>, agentConnection: AgentConnection) {
         self.identifier = identifier
         self.config = config
+        self.agentConnection = agentConnection
         process = Process()
     }
     public func launch() {
@@ -60,8 +65,7 @@ public class Actor<ProxyType> {
             self?.didExit()
         }
         monitor?.schedule()
-        AgentConnection.shared.resume()
-        AgentConnection.shared.proxy?.handshake(endpoint: nil, identifier: identifier) { [weak self] endpoint in
+        agentConnection.proxy?.handshake(endpoint: nil, identifier: identifier) { [weak self] endpoint in
             guard let endpoint = endpoint else {
                 return
             }
@@ -95,7 +99,7 @@ public class Actor<ProxyType> {
         let connection = NSXPCConnection(listenerEndpoint: endpoint)
         connection.remoteObjectInterface = config.interface
         connection.resume()
-        config.receive(connection: connection)
+        config.receive(xpcConnection: connection)
         state = .connected
     }
 }
@@ -111,8 +115,8 @@ public extension Actor {
         public var interface: NSXPCInterface {
             return impl.interface
         }
-        public var connection: NSXPCConnection? {
-            return impl.connection
+        public var xpcConnection: NSXPCConnection? {
+            return impl.xpcConnection
         }
         public var xpcBundle: Bundle {
             return impl.xpcBundle
@@ -120,8 +124,8 @@ public extension Actor {
         public var proxy: ProxyType? {
             return impl.proxy as? ProxyType
         }
-        public mutating func receive(connection: NSXPCConnection) {
-            impl.receive(connection: connection)
+        public mutating func receive(xpcConnection: NSXPCConnection) {
+            impl.receive(xpcConnection: xpcConnection)
         }
         private var impl: ActorConfigImpl
         public init(impl: ActorConfigImpl) {
@@ -132,8 +136,8 @@ public extension Actor {
 
 public protocol ActorConfigImpl {
     var interface: NSXPCInterface { get }
-    var connection: NSXPCConnection? { get }
+    var xpcConnection: NSXPCConnection? { get }
     var xpcBundle: Bundle { get }
     var proxy: Any? { get }
-    mutating func receive(connection: NSXPCConnection)
+    mutating func receive(xpcConnection: NSXPCConnection)
 }

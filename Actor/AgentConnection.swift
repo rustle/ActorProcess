@@ -7,11 +7,8 @@
 import Foundation
 import Darwin.bsm.audit
 
-public let agentIdentifier = "com.rustle.SpeakUp.act"
-public let agentPlistName = "act.plist"
-
 public class AgentConnection {
-    static public func load() throws {
+    static public func load(identifier: String) throws {
         let bundle = Bundle(for: AgentConnection.self)
         guard let agentPath = bundle.path(forResource: "act", ofType: nil) else {
             return
@@ -27,7 +24,8 @@ public class AgentConnection {
             try FileManager.`default`.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
         }
         // Load/Reload agent
-        let plistURL = folderURL.appendingPathComponent(agentPlistName)
+        let agentPlistName = "act.plist"
+        let plistURL = folderURL.appendingPathComponent("\(identifier).\(agentPlistName)")
         let unload = Process()
         unload.launchPath = "/bin/launchctl"
         unload.arguments = ["unload", plistURL.path]
@@ -39,13 +37,15 @@ public class AgentConnection {
             return
         }
         try ([
-            "Label" : agentIdentifier,
+            "Label" : identifier,
             "ProgramArguments" : [
                 agentPath,
                 "--auditSessionIdentifier",
                 String(info.ai_asid),
+                "--machServiceName",
+                identifier,
             ],
-            "MachServices" : [ agentIdentifier : [:] ],
+            "MachServices" : [ identifier : [:] ],
         ] as NSDictionary).write(to: plistURL)
         let load = Process()
         load.launchPath = "/bin/launchctl"
@@ -54,11 +54,10 @@ public class AgentConnection {
         load.launch()
         load.waitUntilExit()
     }
-    public static let shared = AgentConnection()
     private let connection: NSXPCConnection
     public private(set) var proxy: AgentMessaging?
-    private init() {
-        connection = NSXPCConnection(machServiceName: "com.rustle.SpeakUp.act", options: [])
+    public init(identifier: String) {
+        connection = NSXPCConnection(machServiceName: identifier, options: [])
         connection.remoteObjectInterface = NSXPCInterface(with: AgentMessaging.self)
     }
     private var once = false

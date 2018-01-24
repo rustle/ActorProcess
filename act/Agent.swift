@@ -66,18 +66,26 @@ public class Agent : NSObject, AgentMessaging, NSXPCListenerDelegate {
     private let listener: NSXPCListener
     private override init() {
         let arguments = ProcessInfo.processInfo.arguments
-        guard var index = arguments.index(where: { $0 == "--auditSessionIdentifier" }) else {
+        guard var auditIndex = arguments.index(where: { $0 == "--auditSessionIdentifier" }) else {
             exit(EXIT_FAILURE)
         }
-        index += 1
-        guard arguments.count > index else {
+        auditIndex += 1
+        guard arguments.count > auditIndex else {
             exit(EXIT_FAILURE)
         }
-        guard let pid = au_asid_t(arguments[index]) else {
+        guard let audit = au_asid_t(arguments[auditIndex]) else {
             exit(EXIT_FAILURE)
         }
-        auditSessionIdentifier = pid
-        listener = NSXPCListener(machServiceName: "com.rustle.SpeakUp.act")
+        auditSessionIdentifier = audit
+        guard var nameIndex = arguments.index(where: { $0 == "--machServiceName" }) else {
+            exit(EXIT_FAILURE)
+        }
+        nameIndex += 1
+        guard arguments.count > nameIndex else {
+            exit(EXIT_FAILURE)
+        }
+        let name = arguments[nameIndex]
+        listener = NSXPCListener(machServiceName: name)
         super.init()
         listener.delegate = self
     }
