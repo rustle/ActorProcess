@@ -11,13 +11,17 @@
 		911E70B520162E6F00EF0B18 /* KernelQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E70B320162E6E00EF0B18 /* KernelQueue.swift */; };
 		911E711A2018384B00EF0B18 /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E71192018384B00EF0B18 /* Security.swift */; };
 		911EF56920156BAF00CA3E0E /* Actor.h in Headers */ = {isa = PBXBuildFile; fileRef = 911EF56720156BAF00CA3E0E /* Actor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		91D1CF8220156C9D00BC65A3 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D1CF8120156C9D00BC65A3 /* Actor.swift */; };
+		91AC383A20185FE900E46F78 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC383920185FE900E46F78 /* Actor.swift */; };
+		91D1CF8220156C9D00BC65A3 /* ActorConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D1CF8120156C9D00BC65A3 /* ActorConnection.swift */; };
 		91D1CF9B2015796200BC65A3 /* AgentConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D1CF9A2015796200BC65A3 /* AgentConnection.swift */; };
 		91D1CFA62015882D00BC65A3 /* AgentMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D1CFA52015882D00BC65A3 /* AgentMessaging.swift */; };
 		91D1CFAF2015A07700BC65A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D1CFAE2015A07700BC65A3 /* main.m */; };
 		91D1CFB42015A09C00BC65A3 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D1CFB32015A09C00BC65A3 /* Agent.swift */; };
 		91D1CFB52015A0BB00BC65A3 /* act in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91D1CFAC2015A07700BC65A3 /* act */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91D1CFB82015A0DD00BC65A3 /* AgentMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D1CFA52015882D00BC65A3 /* AgentMessaging.swift */; };
+		91DD040D201864BD00897C39 /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E71192018384B00EF0B18 /* Security.swift */; };
+		91DD040F2018652B00897C39 /* XPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DD040E2018652B00897C39 /* XPC.swift */; };
+		91DD04102018660600897C39 /* XPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DD040E2018652B00897C39 /* XPC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,12 +63,14 @@
 		911EF56420156BAF00CA3E0E /* Actor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Actor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		911EF56720156BAF00CA3E0E /* Actor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Actor.h; sourceTree = "<group>"; };
 		911EF56820156BAF00CA3E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		91D1CF8120156C9D00BC65A3 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
+		91AC383920185FE900E46F78 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
+		91D1CF8120156C9D00BC65A3 /* ActorConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorConnection.swift; sourceTree = "<group>"; };
 		91D1CF9A2015796200BC65A3 /* AgentConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentConnection.swift; sourceTree = "<group>"; };
 		91D1CFA52015882D00BC65A3 /* AgentMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentMessaging.swift; sourceTree = "<group>"; };
 		91D1CFAC2015A07700BC65A3 /* act */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = act; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D1CFAE2015A07700BC65A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		91D1CFB32015A09C00BC65A3 /* Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
+		91DD040E2018652B00897C39 /* XPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				911EF56720156BAF00CA3E0E /* Actor.h */,
-				91D1CF8120156C9D00BC65A3 /* Actor.swift */,
+				91AC383920185FE900E46F78 /* Actor.swift */,
+				91D1CF8120156C9D00BC65A3 /* ActorConnection.swift */,
 				91D1CF9A2015796200BC65A3 /* AgentConnection.swift */,
 				91D1CFA52015882D00BC65A3 /* AgentMessaging.swift */,
 				911E70B220162E6E00EF0B18 /* ProcessMonitor.swift */,
@@ -122,6 +129,7 @@
 			children = (
 				91D1CFAE2015A07700BC65A3 /* main.m */,
 				91D1CFB32015A09C00BC65A3 /* Agent.swift */,
+				91DD040E2018652B00897C39 /* XPC.swift */,
 				911E71192018384B00EF0B18 /* Security.swift */,
 			);
 			path = act;
@@ -235,9 +243,12 @@
 			files = (
 				911E70B520162E6F00EF0B18 /* KernelQueue.swift in Sources */,
 				91D1CFA62015882D00BC65A3 /* AgentMessaging.swift in Sources */,
-				91D1CF8220156C9D00BC65A3 /* Actor.swift in Sources */,
+				91D1CF8220156C9D00BC65A3 /* ActorConnection.swift in Sources */,
+				91AC383A20185FE900E46F78 /* Actor.swift in Sources */,
 				911E70B420162E6F00EF0B18 /* ProcessMonitor.swift in Sources */,
 				91D1CF9B2015796200BC65A3 /* AgentConnection.swift in Sources */,
+				91DD040D201864BD00897C39 /* Security.swift in Sources */,
+				91DD04102018660600897C39 /* XPC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91DD040F2018652B00897C39 /* XPC.swift in Sources */,
 				91D1CFB82015A0DD00BC65A3 /* AgentMessaging.swift in Sources */,
 				911E711A2018384B00EF0B18 /* Security.swift in Sources */,
 				91D1CFAF2015A07700BC65A3 /* main.m in Sources */,

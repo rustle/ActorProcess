@@ -30,7 +30,7 @@ public class Agent : NSObject, AgentMessaging, NSXPCListenerDelegate {
                                shouldAcceptNewConnection newConnection: NSXPCConnection) -> Bool {
         #if !DEBUG // Release only for now
         do {
-            try validate(connection: newConnection, identifier: "")
+            try newConnection.validate(teamIdentifier: "", auditSessionIdentifier: auditSessionIdentifier)
         } catch {
             return false
         }
@@ -39,29 +39,6 @@ public class Agent : NSObject, AgentMessaging, NSXPCListenerDelegate {
         newConnection.exportedObject = self
         newConnection.resume()
         return true
-    }
-    public enum Error : Swift.Error {
-        case auditionSessionMismatch
-        case typeError
-        case identifierMismatch
-    }
-    private func validate(connection: NSXPCConnection, identifier: String) throws {
-        guard connection.auditSessionIdentifier == auditSessionIdentifier else {
-            throw Agent.Error.auditionSessionMismatch
-        }
-        let processIdentifier = connection.processIdentifier
-        let attributes = [ kSecGuestAttributePid as String : NSNumber(value: processIdentifier) ]
-        let client = try SecCode.client(attributes, flags: [])
-        let appleSignedRequirements = "anchor apple generic and (certificate leaf[field.1.2.840.113635.100.6.1.9] or (certificate 1[field.1.2.840.113635.100.6.2.6] and certificate leaf[field.1.2.840.113635.100.6.1.13]))"
-        let requirement = try SecRequirement.requirement(appleSignedRequirements, flags: [])
-        try client.checkValidity(requirement: requirement, flags: [])
-        let information = try client.signingInformation(flags: [.signingInformation, .requirementInformation])
-        guard let teamIdentifier = information[kSecCodeInfoTeamIdentifier as String] as? String else {
-            throw Agent.Error.typeError
-        }
-        guard teamIdentifier == identifier else {
-            throw Agent.Error.identifierMismatch
-        }
     }
     private let listener: NSXPCListener
     private override init() {

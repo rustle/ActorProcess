@@ -4,140 +4,50 @@
 //  Copyright © 2018 Doug Russell. All rights reserved.
 //
 
-public class Actor<ProxyType> {
-    public let identifier: String
-    public private(set) var config: Config<ProxyType>
-    public var proxy: ProxyType? {
-        return config.proxy
-    }
-    public var processIdentifier: Int {
-        return Int(process.processIdentifier)
-    }
-    public var xpcConnection: NSXPCConnection? {
-        return config.xpcConnection
-    }
-    public enum Exit {
-        case expected
-        case unexpected
-    }
-    public enum State {
-        case new
-        case running
-        case connected
-        case exited(Exit)
-    }
-    public private(set) var state = State.new {
-        didSet {
-            stateDidChange?(state)
-        }
-    }
-    public var stateDidChange: ((State) -> Void)?
-    private let process: Process
-    private var monitor: ProcessMonitor?
-    private var launchTime: CFAbsoluteTime?
-    private var exitTime: CFAbsoluteTime?
+import Foundation
+
+public class Actor : NSObject, NSXPCListenerDelegate {
+    @objc public var exportedInterfaceProtocol: Protocol?
+    @objc public var exportedObject: Any?
+    private let listener: NSXPCListener
+    private var xpcConnection: NSXPCConnection?
+    private let identifier: String
     private let agentConnection: AgentConnection
-    public init(identifier: String = UUID().uuidString, config: Config<ProxyType>, agentConnection: AgentConnection) {
+    @objc public var connection: Any {
+        return agentConnection
+    }
+    @objc public init(identifier: String, agentIdentifier: String) {
         self.identifier = identifier
-        self.config = config
-        self.agentConnection = agentConnection
-        process = Process()
+        agentConnection = AgentConnection(identifier: agentIdentifier)
+        listener = NSXPCListener.anonymous()
+        super.init()
+        listener.delegate = self
     }
-    public func launch() {
-        switch state {
-        case .new:
-            break
-        default:
-            return
+    @objc public func resume() {
+        listener.resume()
+        agentConnection.resume()
+        agentConnection.proxy?.handshake(endpoint: listener.endpoint, identifier: identifier) { _ in
+            
         }
-        launchTime = CFAbsoluteTimeGetCurrent()
-        process.launchPath = config.xpcBundle.executablePath
-        process.environment = [
-            "DYLD_FRAMEWORK_PATH" : config.xpcBundle.privateFrameworksPath!
-        ]
-        process.arguments = [
-            "--identifier",
-            identifier
-        ]
-        process.launch()
-        monitor = ProcessMonitor(process: process)
-        monitor?.didExit = { [weak self] monitor in
-            self?.didExit()
-        }
-        monitor?.schedule()
-        agentConnection.proxy?.handshake(endpoint: nil, identifier: identifier) { [weak self] endpoint in
-            guard let endpoint = endpoint else {
-                return
+    }
+    @objc public func listener(_ listener: NSXPCListener,
+                               shouldAcceptNewConnection newConnection: NSXPCConnection) -> Bool {
+        do {
+            var info = auditinfo_addr()
+            guard getaudit_addr(&info, Int32(MemoryLayout<auditinfo_addr>.size)) == 0 else {
+                return false
             }
-            DispatchQueue.main.async {
-                self?.receive(endpoint: endpoint)
-            }
+            try newConnection.validate(teamIdentifier: "", auditSessionIdentifier: info.ai_asid)
+        } catch {
+            return false
         }
-        state = .running
+        guard let exportedInterfaceProtocol = exportedInterfaceProtocol, let exportedObject = exportedObject else {
+            return false
+        }
+        xpcConnection = newConnection
+        newConnection.exportedInterface = NSXPCInterface(with: exportedInterfaceProtocol)
+        newConnection.exportedObject = exportedObject
+        newConnection.resume()
+        return true
     }
-    private func didExit() {
-        self.exitTime = CFAbsoluteTimeGetCurrent()
-        switch state {
-        case .exited(let exit):
-            switch exit {
-            case .expected:
-                break
-            default:
-                self.state = .exited(.unexpected)
-            }
-        default:
-            self.state = .exited(.unexpected)
-        }
-        monitor?.unschedule()
-        monitor = nil
-    }
-    public func terminate() {
-        process.terminate()
-        state = .exited(.expected)
-    }
-    private func receive(endpoint: NSXPCListenerEndpoint) {
-        let connection = NSXPCConnection(listenerEndpoint: endpoint)
-        connection.remoteObjectInterface = config.interface
-        connection.resume()
-        config.receive(xpcConnection: connection)
-        state = .connected
-    }
-}
-
-extension Actor : CustomDebugStringConvertible {
-    public var debugDescription: String {
-        return "Actor<\(ProxyType.self)> \(process.processIdentifier) \(identifier)"
-    }
-}
-
-public extension Actor {
-    public struct Config<ProxyType> {
-        public var interface: NSXPCInterface {
-            return impl.interface
-        }
-        public var xpcConnection: NSXPCConnection? {
-            return impl.xpcConnection
-        }
-        public var xpcBundle: Bundle {
-            return impl.xpcBundle
-        }
-        public var proxy: ProxyType? {
-            return impl.proxy as? ProxyType
-        }
-        public mutating func receive(xpcConnection: NSXPCConnection) {
-            impl.receive(xpcConnection: xpcConnection)
-        }
-        private var impl: ActorConfigImpl
-        public init(impl: ActorConfigImpl) {
-            self.impl = impl
-        }
-    }
-}
-
-public protocol ActorConfigImpl {
-    var interface: NSXPCInterface { get }
-    var xpcConnection: NSXPCConnection? { get }
-    var xpcBundle: Bundle { get }
-    var proxy: Any? { get }
-    mutating func receive(xpcConnection: NSXPCConnection)
 }
