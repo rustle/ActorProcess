@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		911E70B420162E6F00EF0B18 /* ProcessMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E70B220162E6E00EF0B18 /* ProcessMonitor.swift */; };
 		911E70B520162E6F00EF0B18 /* KernelQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E70B320162E6E00EF0B18 /* KernelQueue.swift */; };
+		911E711A2018384B00EF0B18 /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E71192018384B00EF0B18 /* Security.swift */; };
 		911EF56920156BAF00CA3E0E /* Actor.h in Headers */ = {isa = PBXBuildFile; fileRef = 911EF56720156BAF00CA3E0E /* Actor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		91D1CF8220156C9D00BC65A3 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D1CF8120156C9D00BC65A3 /* Actor.swift */; };
 		91D1CF9B2015796200BC65A3 /* AgentConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D1CF9A2015796200BC65A3 /* AgentConnection.swift */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		911E70B220162E6E00EF0B18 /* ProcessMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessMonitor.swift; sourceTree = "<group>"; };
 		911E70B320162E6E00EF0B18 /* KernelQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KernelQueue.swift; sourceTree = "<group>"; };
+		911E71192018384B00EF0B18 /* Security.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Security.swift; sourceTree = "<group>"; };
 		911EF56420156BAF00CA3E0E /* Actor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Actor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		911EF56720156BAF00CA3E0E /* Actor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Actor.h; sourceTree = "<group>"; };
 		911EF56820156BAF00CA3E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			children = (
 				91D1CFAE2015A07700BC65A3 /* main.m */,
 				91D1CFB32015A09C00BC65A3 /* Agent.swift */,
+				911E71192018384B00EF0B18 /* Security.swift */,
 			);
 			path = act;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91D1CFB82015A0DD00BC65A3 /* AgentMessaging.swift in Sources */,
+				911E711A2018384B00EF0B18 /* Security.swift in Sources */,
 				91D1CFAF2015A07700BC65A3 /* main.m in Sources */,
 				91D1CFB42015A09C00BC65A3 /* Agent.swift in Sources */,
 			);
