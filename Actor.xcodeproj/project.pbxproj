@@ -89,7 +89,6 @@
 				911EF56620156BAF00CA3E0E /* Actor */,
 				91D1CFAD2015A07700BC65A3 /* act */,
 				911EF56520156BAF00CA3E0E /* Products */,
-				91D1CF98201574E500BC65A3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,13 +113,6 @@
 				911EF56820156BAF00CA3E0E /* Info.plist */,
 			);
 			path = Actor;
-			sourceTree = "<group>";
-		};
-		91D1CF98201574E500BC65A3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		91D1CFAD2015A07700BC65A3 /* act */ = {
