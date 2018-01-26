@@ -10,5 +10,5 @@ import Foundation
 public protocol AgentMessaging {
     func handshake(endpoint: NSXPCListenerEndpoint?, identifier: String, reply: @escaping (NSXPCListenerEndpoint?) -> Void)
     func publish(endpoint: NSXPCListenerEndpoint, identifier: String)
-    func publishedEndpoint(identifier: String, reply: @escaping (NSXPCListenerEndpoint?) -> Void)
+    func publishedEndpoint(identifier: String, reply: @escaping (NSXPCListenerEndpoint) -> Void)
 }

@@ -45,7 +45,7 @@ public class ActorConnection<ProxyType> {
         self.agentConnection = agentConnection
         process = Process()
     }
-    public func launch() {
+    public func launch(connectionExchangeType: Actor.ConnectionExchangeType = .handshake) {
         switch state {
         case .new:
             break
@@ -67,11 +67,13 @@ public class ActorConnection<ProxyType> {
             self?.didExit()
         }
         monitor?.schedule()
-        agentConnection.proxy?.handshake(endpoint: nil, identifier: identifier) { [weak self] endpoint in
-            guard let endpoint = endpoint else {
-                return
+        switch connectionExchangeType {
+        case .handshake:
+            agentConnection.proxy?.handshake(endpoint: nil, identifier: identifier) { [weak self] endpoint in
+                self?.receive(endpoint: endpoint)
             }
-            DispatchQueue.main.async {
+        case .publish:
+            agentConnection.proxy?.publishedEndpoint(identifier: identifier) { [weak self] endpoint in
                 self?.receive(endpoint: endpoint)
             }
         }
@@ -97,7 +99,15 @@ public class ActorConnection<ProxyType> {
         process.terminate()
         state = .exited(.expected)
     }
-    private func receive(endpoint: NSXPCListenerEndpoint) {
+    private func receive(endpoint: NSXPCListenerEndpoint?) {
+        guard let endpoint = endpoint else {
+            return
+        }
+        DispatchQueue.main.async {
+            self._receive(endpoint: endpoint)
+        }
+    }
+    private func _receive(endpoint: NSXPCListenerEndpoint) {
         let connection = NSXPCConnection(listenerEndpoint: endpoint)
         connection.remoteObjectInterface = configuration.interface
         connection.resume()

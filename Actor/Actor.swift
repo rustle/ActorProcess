@@ -13,21 +13,32 @@ public class Actor : NSObject, NSXPCListenerDelegate {
     private var xpcConnection: NSXPCConnection?
     private let identifier: String
     private let agentConnection: AgentConnection
-    @objc public var connection: Any {
+    public var connection: AgentConnection {
         return agentConnection
     }
-    @objc public init(identifier: String, agentIdentifier: String) {
+    public enum ConnectionExchangeType {
+        case handshake
+        case publish
+    }
+    private let connectionExchangeType: ConnectionExchangeType
+    public init(identifier: String, agentConnection: AgentConnection, connectionExchangeType: ConnectionExchangeType = .handshake) {
         self.identifier = identifier
-        agentConnection = AgentConnection(identifier: agentIdentifier)
+        self.agentConnection = agentConnection
+        self.connectionExchangeType = connectionExchangeType
         listener = NSXPCListener.anonymous()
         super.init()
         listener.delegate = self
     }
-    @objc public func resume() {
+    public func resume() {
         listener.resume()
         agentConnection.resume()
-        agentConnection.proxy?.handshake(endpoint: listener.endpoint, identifier: identifier) { _ in
-            
+        switch connectionExchangeType {
+        case .handshake:
+            agentConnection.proxy?.handshake(endpoint: listener.endpoint, identifier: identifier) { _ in
+                
+            }
+        case .publish:
+            agentConnection.proxy?.publish(endpoint: listener.endpoint, identifier: identifier)
         }
     }
     @objc public func listener(_ listener: NSXPCListener,
