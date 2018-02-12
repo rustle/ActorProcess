@@ -4,6 +4,9 @@
 //  Copyright © 2018 Doug Russell. All rights reserved.
 //
 
+import Foundation
+import Signals
+
 public class ActorConnection<ProxyType> {
     public let identifier: String
     public private(set) var configuration: Configuration<ProxyType>
@@ -28,10 +31,10 @@ public class ActorConnection<ProxyType> {
     }
     public private(set) var state = State.new {
         didSet {
-            stateDidChange?(state)
+            stateSignal=>state
         }
     }
-    public var stateDidChange: ((State) -> Void)?
+    public var stateSignal = Signal<State>()
     private let process: Process
     private var monitor: ProcessMonitor?
     private var launchTime: CFAbsoluteTime?
