@@ -7,21 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		911E70B420162E6F00EF0B18 /* ProcessMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E70B220162E6E00EF0B18 /* ProcessMonitor.swift */; };
-		911E70B520162E6F00EF0B18 /* KernelQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E70B320162E6E00EF0B18 /* KernelQueue.swift */; };
-		911E711A2018384B00EF0B18 /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E71192018384B00EF0B18 /* Security.swift */; };
-		911EF56920156BAF00CA3E0E /* Actor.h in Headers */ = {isa = PBXBuildFile; fileRef = 911EF56720156BAF00CA3E0E /* Actor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		91AC383A20185FE900E46F78 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC383920185FE900E46F78 /* Actor.swift */; };
-		91D1CF8220156C9D00BC65A3 /* ActorConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D1CF8120156C9D00BC65A3 /* ActorConnection.swift */; };
-		91D1CF9B2015796200BC65A3 /* AgentConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D1CF9A2015796200BC65A3 /* AgentConnection.swift */; };
-		91D1CFA62015882D00BC65A3 /* AgentMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D1CFA52015882D00BC65A3 /* AgentMessaging.swift */; };
-		91D1CFAF2015A07700BC65A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D1CFAE2015A07700BC65A3 /* main.m */; };
-		91D1CFB42015A09C00BC65A3 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D1CFB32015A09C00BC65A3 /* Agent.swift */; };
+		9160F03D204CB70E0088527F /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F035204CB70E0088527F /* Security.swift */; };
+		9160F03E204CB70E0088527F /* KernelQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F036204CB70E0088527F /* KernelQueue.swift */; };
+		9160F03F204CB70E0088527F /* ActorProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F037204CB70E0088527F /* ActorProcess.swift */; };
+		9160F040204CB70E0088527F /* AgentMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F038204CB70E0088527F /* AgentMessaging.swift */; };
+		9160F041204CB70E0088527F /* ProcessMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F039204CB70E0088527F /* ProcessMonitor.swift */; };
+		9160F042204CB70E0088527F /* ActorConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F03A204CB70E0088527F /* ActorConnection.swift */; };
+		9160F043204CB70E0088527F /* AgentConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F03B204CB70E0088527F /* AgentConnection.swift */; };
+		9160F044204CB70E0088527F /* XPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F03C204CB70E0088527F /* XPC.swift */; };
+		9160F050204CB7650088527F /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F046204CB7530088527F /* Security.swift */; };
+		9160F051204CB7650088527F /* AgentMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F047204CB7530088527F /* AgentMessaging.swift */; };
+		9160F052204CB7650088527F /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F048204CB7530088527F /* Agent.swift */; };
+		9160F053204CB7650088527F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F049204CB7530088527F /* main.swift */; };
+		9160F054204CB7650088527F /* XPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F04A204CB7530088527F /* XPC.swift */; };
 		91D1CFB52015A0BB00BC65A3 /* act in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91D1CFAC2015A07700BC65A3 /* act */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		91D1CFB82015A0DD00BC65A3 /* AgentMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D1CFA52015882D00BC65A3 /* AgentMessaging.swift */; };
-		91DD040D201864BD00897C39 /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E71192018384B00EF0B18 /* Security.swift */; };
-		91DD040F2018652B00897C39 /* XPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DD040E2018652B00897C39 /* XPC.swift */; };
-		91DD04102018660600897C39 /* XPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DD040E2018652B00897C39 /* XPC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,32 +44,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		91D1CFAA2015A07700BC65A3 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		911E70B220162E6E00EF0B18 /* ProcessMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessMonitor.swift; sourceTree = "<group>"; };
-		911E70B320162E6E00EF0B18 /* KernelQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KernelQueue.swift; sourceTree = "<group>"; };
-		911E71192018384B00EF0B18 /* Security.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Security.swift; sourceTree = "<group>"; };
-		911EF56420156BAF00CA3E0E /* Actor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Actor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		911EF56720156BAF00CA3E0E /* Actor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Actor.h; sourceTree = "<group>"; };
-		911EF56820156BAF00CA3E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		91AC383920185FE900E46F78 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
-		91D1CF8120156C9D00BC65A3 /* ActorConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorConnection.swift; sourceTree = "<group>"; };
-		91D1CF9A2015796200BC65A3 /* AgentConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentConnection.swift; sourceTree = "<group>"; };
-		91D1CFA52015882D00BC65A3 /* AgentMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentMessaging.swift; sourceTree = "<group>"; };
+		911EF56420156BAF00CA3E0E /* ActorProcess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ActorProcess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9160F035204CB70E0088527F /* Security.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Security.swift; sourceTree = "<group>"; };
+		9160F036204CB70E0088527F /* KernelQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KernelQueue.swift; sourceTree = "<group>"; };
+		9160F037204CB70E0088527F /* ActorProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorProcess.swift; sourceTree = "<group>"; };
+		9160F038204CB70E0088527F /* AgentMessaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentMessaging.swift; sourceTree = "<group>"; };
+		9160F039204CB70E0088527F /* ProcessMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessMonitor.swift; sourceTree = "<group>"; };
+		9160F03A204CB70E0088527F /* ActorConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorConnection.swift; sourceTree = "<group>"; };
+		9160F03B204CB70E0088527F /* AgentConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentConnection.swift; sourceTree = "<group>"; };
+		9160F03C204CB70E0088527F /* XPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XPC.swift; sourceTree = "<group>"; };
+		9160F046204CB7530088527F /* Security.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Security.swift; sourceTree = "<group>"; };
+		9160F047204CB7530088527F /* AgentMessaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentMessaging.swift; sourceTree = "<group>"; };
+		9160F048204CB7530088527F /* Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
+		9160F049204CB7530088527F /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		9160F04A204CB7530088527F /* XPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XPC.swift; sourceTree = "<group>"; };
 		91D1CFAC2015A07700BC65A3 /* act */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = act; sourceTree = BUILT_PRODUCTS_DIR; };
-		91D1CFAE2015A07700BC65A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		91D1CFB32015A09C00BC65A3 /* Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
-		91DD040E2018652B00897C39 /* XPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +85,8 @@
 		911EF55A20156BAE00CA3E0E = {
 			isa = PBXGroup;
 			children = (
-				911EF56620156BAF00CA3E0E /* Actor */,
-				91D1CFAD2015A07700BC65A3 /* act */,
+				9160F034204CB70E0088527F /* ActorProcess */,
+				9160F045204CB7530088527F /* act */,
 				911EF56520156BAF00CA3E0E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,36 +94,39 @@
 		911EF56520156BAF00CA3E0E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				911EF56420156BAF00CA3E0E /* Actor.framework */,
+				911EF56420156BAF00CA3E0E /* ActorProcess.framework */,
 				91D1CFAC2015A07700BC65A3 /* act */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		911EF56620156BAF00CA3E0E /* Actor */ = {
+		9160F034204CB70E0088527F /* ActorProcess */ = {
 			isa = PBXGroup;
 			children = (
-				911EF56720156BAF00CA3E0E /* Actor.h */,
-				91AC383920185FE900E46F78 /* Actor.swift */,
-				91D1CF8120156C9D00BC65A3 /* ActorConnection.swift */,
-				91D1CF9A2015796200BC65A3 /* AgentConnection.swift */,
-				91D1CFA52015882D00BC65A3 /* AgentMessaging.swift */,
-				911E70B220162E6E00EF0B18 /* ProcessMonitor.swift */,
-				911E70B320162E6E00EF0B18 /* KernelQueue.swift */,
-				911EF56820156BAF00CA3E0E /* Info.plist */,
+				9160F03A204CB70E0088527F /* ActorConnection.swift */,
+				9160F03B204CB70E0088527F /* AgentConnection.swift */,
+				9160F038204CB70E0088527F /* AgentMessaging.swift */,
+				9160F037204CB70E0088527F /* ActorProcess.swift */,
+				9160F036204CB70E0088527F /* KernelQueue.swift */,
+				9160F039204CB70E0088527F /* ProcessMonitor.swift */,
+				9160F035204CB70E0088527F /* Security.swift */,
+				9160F03C204CB70E0088527F /* XPC.swift */,
 			);
-			path = Actor;
+			name = ActorProcess;
+			path = Sources/ActorProcess;
 			sourceTree = "<group>";
 		};
-		91D1CFAD2015A07700BC65A3 /* act */ = {
+		9160F045204CB7530088527F /* act */ = {
 			isa = PBXGroup;
 			children = (
-				91D1CFAE2015A07700BC65A3 /* main.m */,
-				91D1CFB32015A09C00BC65A3 /* Agent.swift */,
-				91DD040E2018652B00897C39 /* XPC.swift */,
-				911E71192018384B00EF0B18 /* Security.swift */,
+				9160F049204CB7530088527F /* main.swift */,
+				9160F048204CB7530088527F /* Agent.swift */,
+				9160F047204CB7530088527F /* AgentMessaging.swift */,
+				9160F046204CB7530088527F /* Security.swift */,
+				9160F04A204CB7530088527F /* XPC.swift */,
 			);
-			path = act;
+			name = act;
+			path = Sources/act;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,16 +136,15 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				911EF56920156BAF00CA3E0E /* Actor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		911EF56320156BAF00CA3E0E /* Actor */ = {
+		911EF56320156BAF00CA3E0E /* ActorProcess */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 911EF56C20156BAF00CA3E0E /* Build configuration list for PBXNativeTarget "Actor" */;
+			buildConfigurationList = 911EF56C20156BAF00CA3E0E /* Build configuration list for PBXNativeTarget "ActorProcess" */;
 			buildPhases = (
 				911EF55F20156BAF00CA3E0E /* Sources */,
 				911EF56020156BAF00CA3E0E /* Frameworks */,
@@ -164,9 +157,9 @@
 			dependencies = (
 				91D1CFB72015A0C000BC65A3 /* PBXTargetDependency */,
 			);
-			name = Actor;
+			name = ActorProcess;
 			productName = Actor;
-			productReference = 911EF56420156BAF00CA3E0E /* Actor.framework */;
+			productReference = 911EF56420156BAF00CA3E0E /* ActorProcess.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		91D1CFAB2015A07700BC65A3 /* act */ = {
@@ -175,7 +168,6 @@
 			buildPhases = (
 				91D1CFA82015A07700BC65A3 /* Sources */,
 				91D1CFA92015A07700BC65A3 /* Frameworks */,
-				91D1CFAA2015A07700BC65A3 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -208,7 +200,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 911EF55E20156BAE00CA3E0E /* Build configuration list for PBXProject "Actor" */;
+			buildConfigurationList = 911EF55E20156BAE00CA3E0E /* Build configuration list for PBXProject "ActorProcess" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -220,7 +212,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				911EF56320156BAF00CA3E0E /* Actor */,
+				911EF56320156BAF00CA3E0E /* ActorProcess */,
 				91D1CFAB2015A07700BC65A3 /* act */,
 			);
 		};
@@ -241,14 +233,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				911E70B520162E6F00EF0B18 /* KernelQueue.swift in Sources */,
-				91D1CFA62015882D00BC65A3 /* AgentMessaging.swift in Sources */,
-				91D1CF8220156C9D00BC65A3 /* ActorConnection.swift in Sources */,
-				91AC383A20185FE900E46F78 /* Actor.swift in Sources */,
-				911E70B420162E6F00EF0B18 /* ProcessMonitor.swift in Sources */,
-				91D1CF9B2015796200BC65A3 /* AgentConnection.swift in Sources */,
-				91DD040D201864BD00897C39 /* Security.swift in Sources */,
-				91DD04102018660600897C39 /* XPC.swift in Sources */,
+				9160F040204CB70E0088527F /* AgentMessaging.swift in Sources */,
+				9160F043204CB70E0088527F /* AgentConnection.swift in Sources */,
+				9160F03E204CB70E0088527F /* KernelQueue.swift in Sources */,
+				9160F03F204CB70E0088527F /* ActorProcess.swift in Sources */,
+				9160F041204CB70E0088527F /* ProcessMonitor.swift in Sources */,
+				9160F03D204CB70E0088527F /* Security.swift in Sources */,
+				9160F042204CB70E0088527F /* ActorConnection.swift in Sources */,
+				9160F044204CB70E0088527F /* XPC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,11 +248,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91DD040F2018652B00897C39 /* XPC.swift in Sources */,
-				91D1CFB82015A0DD00BC65A3 /* AgentMessaging.swift in Sources */,
-				911E711A2018384B00EF0B18 /* Security.swift in Sources */,
-				91D1CFAF2015A07700BC65A3 /* main.m in Sources */,
-				91D1CFB42015A09C00BC65A3 /* Agent.swift in Sources */,
+				9160F054204CB7650088527F /* XPC.swift in Sources */,
+				9160F052204CB7650088527F /* Agent.swift in Sources */,
+				9160F051204CB7650088527F /* AgentMessaging.swift in Sources */,
+				9160F053204CB7650088527F /* main.swift in Sources */,
+				9160F050204CB7650088527F /* Security.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,10 +391,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Actor/Info.plist;
+				INFOPLIST_FILE = ActorProcess.xcodeproj/ActorProcess_Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rustle.speakup.Actor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rustle.speakup.ActorProcess;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -422,10 +414,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Actor/Info.plist;
+				INFOPLIST_FILE = ActorProcess.xcodeproj/ActorProcess_Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rustle.speakup.Actor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rustle.speakup.ActorProcess;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -458,7 +450,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		911EF55E20156BAE00CA3E0E /* Build configuration list for PBXProject "Actor" */ = {
+		911EF55E20156BAE00CA3E0E /* Build configuration list for PBXProject "ActorProcess" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				911EF56A20156BAF00CA3E0E /* Debug */,
@@ -467,7 +459,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		911EF56C20156BAF00CA3E0E /* Build configuration list for PBXNativeTarget "Actor" */ = {
+		911EF56C20156BAF00CA3E0E /* Build configuration list for PBXNativeTarget "ActorProcess" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				911EF56D20156BAF00CA3E0E /* Debug */,

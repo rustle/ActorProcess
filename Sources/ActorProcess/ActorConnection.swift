@@ -48,7 +48,7 @@ public class ActorConnection<ProxyType> {
         self.agentConnection = agentConnection
         process = Process()
     }
-    public func launch(connectionExchangeType: Actor.ConnectionExchangeType = .handshake) {
+    public func launch(connectionExchangeType: ActorProcess.ConnectionExchangeType = .handshake) {
         switch state {
         case .new:
             break
