@@ -56,9 +56,12 @@ public class ActorConnection<ProxyType> {
             return
         }
         launchTime = CFAbsoluteTimeGetCurrent()
-        process.launchPath = configuration.xpcBundle.executablePath
+        guard let bundle = try? configuration.xpcBundle() else {
+            return
+        }
+        process.launchPath = bundle.executablePath
         process.environment = [
-            "DYLD_FRAMEWORK_PATH" : configuration.xpcBundle.privateFrameworksPath!
+            "DYLD_FRAMEWORK_PATH" : bundle.privateFrameworksPath!
         ]
         process.arguments = [
             "--identifier",
@@ -133,8 +136,8 @@ public extension ActorConnection {
         public var xpcConnection: NSXPCConnection? {
             return impl.xpcConnection
         }
-        public var xpcBundle: Bundle {
-            return impl.xpcBundle
+        public func xpcBundle() throws -> Bundle {
+            return try impl.xpcBundle()
         }
         public var proxy: ProxyType? {
             return impl.proxy as? ProxyType
@@ -152,7 +155,7 @@ public extension ActorConnection {
 public protocol ActorConnectionConfigurationImpl {
     var interface: NSXPCInterface { get }
     var xpcConnection: NSXPCConnection? { get }
-    var xpcBundle: Bundle { get }
+    func xpcBundle() throws -> Bundle
     var proxy: Any? { get }
     mutating func receive(xpcConnection: NSXPCConnection)
 }
