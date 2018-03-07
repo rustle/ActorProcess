@@ -9,7 +9,7 @@ import ActorProcess
 
 let serviceManager = ExampleServiceManager(identifier: "example")
 let service = serviceManager.connect(identifier: 10)
-service.connection.stateSignal.subscribe(with: serviceManager) { [weak service] state in
+service.connection.stateSignal.subscribe { [weak service] state in
     switch state {
     case .new:
         break
@@ -20,7 +20,7 @@ service.connection.stateSignal.subscribe(with: serviceManager) { [weak service] 
     case .exited(_):
         break
     }
-}.onQueue(DispatchQueue.global())
+}.queue(DispatchQueue.global())
 withExtendedLifetime(serviceManager) {
     dispatchMain()
 }

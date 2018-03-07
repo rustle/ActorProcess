@@ -25,7 +25,7 @@ class ExampleServiceManager {
             return service
         }
         let connection = ActorConnection(configuration: ExampleConfigImpl.config(identifier: identifier), agentConnection: agentConnection)
-        connection.stateSignal.subscribe(with: connection) { [weak self] state in
+        connection.stateSignal.subscribe { [weak self] state in
             switch state {
             case .new:
                 break
@@ -50,16 +50,19 @@ class ExampleServiceManager {
     private var candidatesForRelaunch = [Int]()
     private func unexpectedExit(identifier: Int) {
         candidatesForRelaunch.append(identifier)
-        services.removeValue(forKey: identifier)
+        let service = services.removeValue(forKey: identifier)
+        service?.connection.stateSignal.cancelAll()
     }
     private func expectedExit(identifier: Int) {
         services.removeValue(forKey: identifier)
+        service?.connection.stateSignal.cancelAll()
     }
     func disconnect(identifier: Int) {
         guard let service = services.removeValue(forKey: identifier) else {
             return
         }
         service.connection.terminate()
+        service.connection.stateSignal.cancelAll()
     }
 }
 

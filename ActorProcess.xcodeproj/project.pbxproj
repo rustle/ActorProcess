@@ -21,7 +21,6 @@
 		9160F053204CB7650088527F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F049204CB7530088527F /* main.swift */; };
 		9160F054204CB7650088527F /* XPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F04A204CB7530088527F /* XPC.swift */; };
 		9170736D204E44BA00F32D31 /* ActorProcess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 911EF56420156BAF00CA3E0E /* ActorProcess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		91C1E62E204E46E10074F60F /* Signals.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91EA806A204DFB8800A557AB /* Signals.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		91D1CFB52015A0BB00BC65A3 /* act in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91D1CFAC2015A07700BC65A3 /* act */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91EA8051204DFAD900A557AB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EA804C204DFAC700A557AB /* main.swift */; };
 		91EA8052204DFAD900A557AB /* ExampleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EA8049204DFAC700A557AB /* ExampleConfig.swift */; };
@@ -35,6 +34,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		914DF34720506A310068823B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 91EA805B204DFB8800A557AB /* Signals.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 91C1E648204E50840074F60F;
+			remoteInfo = Signals;
+		};
+		914DF34B20506A310068823B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 91EA805B204DFB8800A557AB /* Signals.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 91C1E649204E50840074F60F;
+			remoteInfo = Signals;
+		};
+		914DF34D20506A310068823B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 91EA805B204DFB8800A557AB /* Signals.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 91C1E652204E50840074F60F;
+			remoteInfo = SignalsTests;
+		};
 		9170736E204E452C00F32D31 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 911EF55B20156BAE00CA3E0E /* Project object */;
@@ -56,62 +76,6 @@
 			remoteGlobalIDString = 911EF56320156BAF00CA3E0E;
 			remoteInfo = ActorProcess;
 		};
-		91EA8065204DFB8800A557AB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 91EA805B204DFB8800A557AB /* Signals.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 720D11721A085314003C4361;
-			remoteInfo = "Signals iOS";
-		};
-		91EA8067204DFB8800A557AB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 91EA805B204DFB8800A557AB /* Signals.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 720D117D1A085315003C4361;
-			remoteInfo = "SignalsTests iOS";
-		};
-		91EA8069204DFB8800A557AB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 91EA805B204DFB8800A557AB /* Signals.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 72665B361C212BDB0067DF26;
-			remoteInfo = "Signals OSX";
-		};
-		91EA806B204DFB8800A557AB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 91EA805B204DFB8800A557AB /* Signals.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 72665B3F1C212BDB0067DF26;
-			remoteInfo = "SignalsTests OSX";
-		};
-		91EA806D204DFB8800A557AB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 91EA805B204DFB8800A557AB /* Signals.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 725B76B61C26558F001D04CC;
-			remoteInfo = "Signals tvOS";
-		};
-		91EA806F204DFB8800A557AB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 91EA805B204DFB8800A557AB /* Signals.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 725B76BF1C26558F001D04CC;
-			remoteInfo = "SignalsTests tvOS";
-		};
-		91EA8071204DFB8800A557AB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 91EA805B204DFB8800A557AB /* Signals.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 721E12B21C1E8E1D00CD0CBA;
-			remoteInfo = "Signals watchOS";
-		};
-		91EA8073204DFB9200A557AB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 91EA805B204DFB8800A557AB /* Signals.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 72665B351C212BDB0067DF26;
-			remoteInfo = "Signals OSX";
-		};
 		91EA808E204DFEE500A557AB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 911EF55B20156BAE00CA3E0E /* Project object */;
@@ -129,7 +93,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				9170736D204E44BA00F32D31 /* ActorProcess.framework in Embed Frameworks */,
-				91C1E62E204E46E10074F60F /* Signals.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,13 +255,8 @@
 		91EA805C204DFB8800A557AB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				91EA8066204DFB8800A557AB /* Signals.framework */,
-				91EA8068204DFB8800A557AB /* SignalsTests iOS.xctest */,
-				91EA806A204DFB8800A557AB /* Signals.framework */,
-				91EA806C204DFB8800A557AB /* SignalsTests OSX.xctest */,
-				91EA806E204DFB8800A557AB /* Signals.framework */,
-				91EA8070204DFB8800A557AB /* SignalsTests tvOS.xctest */,
-				91EA8072204DFB8800A557AB /* Signals.framework */,
+				914DF34C20506A310068823B /* Signals.framework */,
+				914DF34E20506A310068823B /* SignalsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -341,7 +299,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				91EA8074204DFB9200A557AB /* PBXTargetDependency */,
+				914DF34820506A310068823B /* PBXTargetDependency */,
 				91D1CFB72015A0C000BC65A3 /* PBXTargetDependency */,
 			);
 			name = ActorProcess;
@@ -460,53 +418,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		91EA8066204DFB8800A557AB /* Signals.framework */ = {
+		914DF34C20506A310068823B /* Signals.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Signals.framework;
-			remoteRef = 91EA8065204DFB8800A557AB /* PBXContainerItemProxy */;
+			remoteRef = 914DF34B20506A310068823B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		91EA8068204DFB8800A557AB /* SignalsTests iOS.xctest */ = {
+		914DF34E20506A310068823B /* SignalsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = "SignalsTests iOS.xctest";
-			remoteRef = 91EA8067204DFB8800A557AB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		91EA806A204DFB8800A557AB /* Signals.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Signals.framework;
-			remoteRef = 91EA8069204DFB8800A557AB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		91EA806C204DFB8800A557AB /* SignalsTests OSX.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SignalsTests OSX.xctest";
-			remoteRef = 91EA806B204DFB8800A557AB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		91EA806E204DFB8800A557AB /* Signals.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Signals.framework;
-			remoteRef = 91EA806D204DFB8800A557AB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		91EA8070204DFB8800A557AB /* SignalsTests tvOS.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SignalsTests tvOS.xctest";
-			remoteRef = 91EA806F204DFB8800A557AB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		91EA8072204DFB8800A557AB /* Signals.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Signals.framework;
-			remoteRef = 91EA8071204DFB8800A557AB /* PBXContainerItemProxy */;
+			path = SignalsTests.xctest;
+			remoteRef = 914DF34D20506A310068823B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -581,6 +504,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		914DF34820506A310068823B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Signals;
+			targetProxy = 914DF34720506A310068823B /* PBXContainerItemProxy */;
+		};
 		9170736F204E452C00F32D31 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 91EA8078204DFE9D00A557AB /* ExampleActor */;
@@ -595,11 +523,6 @@
 			isa = PBXTargetDependency;
 			target = 911EF56320156BAF00CA3E0E /* ActorProcess */;
 			targetProxy = 91EA8055204DFAF300A557AB /* PBXContainerItemProxy */;
-		};
-		91EA8074204DFB9200A557AB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Signals OSX";
-			targetProxy = 91EA8073204DFB9200A557AB /* PBXContainerItemProxy */;
 		};
 		91EA808F204DFEE500A557AB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -813,10 +736,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/",
-				);
 				INFOPLIST_FILE = ActorProcess.xcodeproj/ExampleActor_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rustle.speakup.ExampleActor;
@@ -832,10 +751,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/",
-				);
 				INFOPLIST_FILE = ActorProcess.xcodeproj/ExampleActor_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rustle.speakup.ExampleActor;

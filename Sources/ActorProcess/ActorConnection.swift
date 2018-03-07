@@ -31,7 +31,7 @@ public class ActorConnection<ProxyType> {
     }
     public private(set) var state = State.new {
         didSet {
-            stateSignal=>state
+            stateSignal⏦state
         }
     }
     public var stateSignal = Signal<State>()
