@@ -24,8 +24,13 @@ class ProcessMonitor {
         self.process = process
     }
     deinit {
+#if swift(>=4.1)
+        unsafePointer?.deinitialize(count: 1)
+        unsafePointer?.deallocate()
+#else
         unsafePointer?.deinitialize()
         unsafePointer?.deallocate(capacity: 1)
+#endif
     }
     private var queue: KernelQueue?
     private var fileDescriptor: CFFileDescriptor?
