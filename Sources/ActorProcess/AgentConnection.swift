@@ -8,11 +8,10 @@ import Foundation
 import Darwin.bsm.audit
 
 public class AgentConnection {
-    static public func load(identifier: String) throws {
-        let bundle = Bundle(for: AgentConnection.self)
-        guard let agentPath = bundle.path(forResource: "act", ofType: nil) else {
-            return
-        }
+    public enum Error : Swift.Error {
+        case unableToLoadResources
+    }
+    static private func createPropertyListIfNeeded(identifier: String) throws -> URL {
         let applicationSupportURL = try FileManager.`default`.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let folderURL: URL
         if let bundleIdentifier = Bundle.main.bundleIdentifier {
@@ -23,15 +22,30 @@ public class AgentConnection {
         if !FileManager.`default`.fileExists(atPath: folderURL.path) {
             try FileManager.`default`.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
         }
-        // Load/Reload agent
         let agentPlistName = "act.plist"
         let plistURL = folderURL.appendingPathComponent("\(identifier).\(agentPlistName)")
+        return plistURL
+    }
+    static private func unload(plistURL: URL) {
         let unload = Process()
         unload.launchPath = "/bin/launchctl"
         unload.arguments = ["unload", plistURL.path]
         unload.standardOutput = FileHandle.standardOutput
         unload.launch()
         unload.waitUntilExit()
+    }
+    static public func unload(identifier: String) throws {
+        let plistURL = try createPropertyListIfNeeded(identifier: identifier)
+        unload(plistURL: plistURL)
+    }
+    static public func load(identifier: String) throws {
+        let bundle = Bundle(for: AgentConnection.self)
+        guard let agentPath = bundle.path(forResource: "act", ofType: nil) else {
+            throw AgentConnection.Error.unableToLoadResources
+        }
+        let plistURL = try createPropertyListIfNeeded(identifier: identifier)
+        // Load/Reload agent
+        unload(plistURL: plistURL)
         var info = auditinfo_addr()
         guard getaudit_addr(&info, Int32(MemoryLayout<auditinfo_addr>.size)) == 0 else {
             return
@@ -53,6 +67,9 @@ public class AgentConnection {
         load.standardOutput = FileHandle.standardOutput
         load.launch()
         load.waitUntilExit()
+    }
+    public var identifier: String {
+        return connection.serviceName!
     }
     private let connection: NSXPCConnection
     public private(set) var proxy: AgentMessaging?
