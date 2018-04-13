@@ -19,7 +19,7 @@ let package = Package(
             targets: ["ExampleActor"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/rustle/Signals.git", .revision("c78d11f6d47c017113cf9566c17ec16e5ce8b787")),
+        .package(url: "https://github.com/rustle/Signals.git", .revision("dd050c5aaa8f576e21c4631457e61fde80170cd0")),
     ],
     targets: [
         .target(
