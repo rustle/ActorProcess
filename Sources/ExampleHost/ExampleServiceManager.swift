@@ -6,7 +6,7 @@
 
 import Foundation
 import ActorProcess
-import Signals
+import Combine
 
 class ExampleServiceManager {
     let agentConnection: AgentConnection
@@ -24,25 +24,30 @@ class ExampleServiceManager {
         if let service = services[identifier] {
             return service
         }
-        let connection = ActorConnection(configuration: ExampleConfigImpl.config(identifier: identifier), agentConnection: agentConnection)
-        let service = Service(connection: connection, identifier: identifier)
-        connection.stateSignal.subscribe { [weak self] state in
-            switch state {
-            case .new:
-                break
-            case .running:
-                break
-            case .connected:
-                break
-            case .exited(let exit):
-                switch exit {
-                case .unexpected:
-                    self?.unexpectedExit(identifier: identifier)
-                case .expected:
-                    self?.expectedExit(identifier: identifier)
+        let connection = ActorConnection(configuration: ExampleConfigImpl.config(identifier: identifier),
+                                         agentConnection: agentConnection)
+        let service = Service(connection: connection,
+                              identifier: identifier)
+        _ = connection
+            .$state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                switch state {
+                case .new:
+                    break
+                case .running:
+                    break
+                case .connected:
+                    break
+                case .exited(let exit):
+                    switch exit {
+                    case .unexpected:
+                        self?.unexpectedExit(identifier: identifier)
+                    case .expected:
+                        self?.expectedExit(identifier: identifier)
+                    }
                 }
             }
-        }.with(observer: service)
         connection.launch()
         services[identifier] = service
         return service

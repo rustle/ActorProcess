@@ -13,7 +13,7 @@ public enum NSXPCConnectionError : Error {
 }
 
 public extension NSXPCConnection {
-    public func validate(teamIdentifier: String, auditSessionIdentifier: au_asid_t) throws {
+    func validate(teamIdentifier: String, auditSessionIdentifier: au_asid_t) throws {
         guard self.auditSessionIdentifier == auditSessionIdentifier else {
             throw NSXPCConnectionError.auditionSessionMismatch
         }

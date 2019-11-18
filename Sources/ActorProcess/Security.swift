@@ -16,7 +16,7 @@ public enum SecRequirementError : Error {
 }
 
 public extension SecCode {
-    public static func client(_ attributes: [String:Any], flags: SecCSFlags) throws -> SecCode {
+    static func client(_ attributes: [String:Any], flags: SecCSFlags) throws -> SecCode {
         var value: SecCode?
         let status = SecCodeCopyGuestWithAttributes(nil, attributes as CFDictionary, flags, &value)
         guard status == errSecSuccess, let client = value else {
@@ -24,13 +24,13 @@ public extension SecCode {
         }
         return client
     }
-    public func checkValidity(requirement: SecRequirement?, flags: SecCSFlags) throws {
+    func checkValidity(requirement: SecRequirement?, flags: SecCSFlags) throws {
         let status = SecCodeCheckValidity(self, flags, requirement)
         guard status == errSecSuccess else {
             throw SecCodeError.osStatus(Int(status))
         }
     }
-    public func signingInformation(flags: SecCSFlags) throws -> [String:Any] {
+    func signingInformation(flags: SecCSFlags) throws -> [String:Any] {
         var value: CFDictionary?
         let status = SecCodeCopySigningInformation(self as! SecStaticCode, flags, &value)
         guard status == errSecSuccess else {
@@ -44,7 +44,7 @@ public extension SecCode {
 }
 
 public extension SecRequirement {
-    public static func requirement(_ requirement: String, flags: SecCSFlags) throws -> SecRequirement {
+    static func requirement(_ requirement: String, flags: SecCSFlags) throws -> SecRequirement {
         var value: SecRequirement?
         let status = SecRequirementCreateWithString(requirement as CFString, flags, &value);
         guard status == errSecSuccess, let requirement = value else {
@@ -60,10 +60,10 @@ fileprivate struct SecCSFlagsStorage {
 }
 
 public extension SecCSFlags {
-    public static var signingInformation: SecCSFlags {
-        return SecCSFlagsStorage.signingInformation
+    static var signingInformation: SecCSFlags {
+        SecCSFlagsStorage.signingInformation
     }
-    public static var requirementInformation: SecCSFlags {
-        return SecCSFlagsStorage.requirementInformation
+    static var requirementInformation: SecCSFlags {
+        SecCSFlagsStorage.requirementInformation
     }
 }

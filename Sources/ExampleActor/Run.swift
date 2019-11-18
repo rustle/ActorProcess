@@ -15,7 +15,7 @@ public protocol ExportedObject {
 public class Run : NSObject {
     private func identifier() -> String {
         let arguments = ProcessInfo.processInfo.arguments
-        guard var index = arguments.index(where: { return $0 == "--identifier" }) else {
+        guard var index = arguments.firstIndex(where: { return $0 == "--identifier" }) else {
             exit(1)
         }
         index += 1

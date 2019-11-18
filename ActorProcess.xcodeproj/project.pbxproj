@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9160F03D204CB70E0088527F /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F035204CB70E0088527F /* Security.swift */; };
-		9160F03E204CB70E0088527F /* KernelQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F036204CB70E0088527F /* KernelQueue.swift */; };
 		9160F03F204CB70E0088527F /* ActorProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F037204CB70E0088527F /* ActorProcess.swift */; };
 		9160F040204CB70E0088527F /* AgentMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F038204CB70E0088527F /* AgentMessaging.swift */; };
 		9160F041204CB70E0088527F /* ProcessMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160F039204CB70E0088527F /* ProcessMonitor.swift */; };
@@ -34,27 +33,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		914DF34720506A310068823B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 91EA805B204DFB8800A557AB /* Signals.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 91C1E648204E50840074F60F;
-			remoteInfo = Signals;
-		};
-		914DF34B20506A310068823B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 91EA805B204DFB8800A557AB /* Signals.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 91C1E649204E50840074F60F;
-			remoteInfo = Signals;
-		};
-		914DF34D20506A310068823B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 91EA805B204DFB8800A557AB /* Signals.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 91C1E652204E50840074F60F;
-			remoteInfo = SignalsTests;
-		};
 		9170736E204E452C00F32D31 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 911EF55B20156BAE00CA3E0E /* Project object */;
@@ -121,7 +99,6 @@
 /* Begin PBXFileReference section */
 		911EF56420156BAF00CA3E0E /* ActorProcess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ActorProcess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9160F035204CB70E0088527F /* Security.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Security.swift; sourceTree = "<group>"; };
-		9160F036204CB70E0088527F /* KernelQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KernelQueue.swift; sourceTree = "<group>"; };
 		9160F037204CB70E0088527F /* ActorProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorProcess.swift; sourceTree = "<group>"; };
 		9160F038204CB70E0088527F /* AgentMessaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentMessaging.swift; sourceTree = "<group>"; };
 		9160F039204CB70E0088527F /* ProcessMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessMonitor.swift; sourceTree = "<group>"; };
@@ -133,13 +110,13 @@
 		9160F048204CB7530088527F /* Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
 		9160F049204CB7530088527F /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		9160F04A204CB7530088527F /* XPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XPC.swift; sourceTree = "<group>"; };
+		918B3A342380B6FC00AD3F19 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
 		91D1CFAC2015A07700BC65A3 /* act */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = act; sourceTree = BUILT_PRODUCTS_DIR; };
 		91EA8041204DFAB000A557AB /* ExampleHost */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ExampleHost; sourceTree = BUILT_PRODUCTS_DIR; };
 		91EA8049204DFAC700A557AB /* ExampleConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleConfig.swift; sourceTree = "<group>"; };
 		91EA804A204DFAC700A557AB /* ExampleMessaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleMessaging.swift; sourceTree = "<group>"; };
 		91EA804B204DFAC700A557AB /* ExampleServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleServiceManager.swift; sourceTree = "<group>"; };
 		91EA804C204DFAC700A557AB /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		91EA805B204DFB8800A557AB /* Signals.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Signals.xcodeproj; path = ".build/checkouts/Signals.git--353844806167487743/Signals.xcodeproj"; sourceTree = "<group>"; };
 		91EA8079204DFE9D00A557AB /* ExampleActor.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = ExampleActor.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		91EA8086204DFEC800A557AB /* ExampleMessaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleMessaging.swift; sourceTree = "<group>"; };
 		91EA8087204DFEC800A557AB /* Example.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
@@ -183,11 +160,11 @@
 		911EF55A20156BAE00CA3E0E = {
 			isa = PBXGroup;
 			children = (
+				918B3A332380B6FC00AD3F19 /* Config */,
 				9160F034204CB70E0088527F /* ActorProcess */,
 				9160F045204CB7530088527F /* act */,
 				91EA8048204DFAC700A557AB /* ExampleHost */,
 				91EA8085204DFEC800A557AB /* ExampleActor */,
-				91EA805A204DFB7300A557AB /* Dependencies */,
 				911EF56520156BAF00CA3E0E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -210,7 +187,6 @@
 				9160F03B204CB70E0088527F /* AgentConnection.swift */,
 				9160F038204CB70E0088527F /* AgentMessaging.swift */,
 				9160F037204CB70E0088527F /* ActorProcess.swift */,
-				9160F036204CB70E0088527F /* KernelQueue.swift */,
 				9160F039204CB70E0088527F /* ProcessMonitor.swift */,
 				9160F035204CB70E0088527F /* Security.swift */,
 				9160F03C204CB70E0088527F /* XPC.swift */,
@@ -232,6 +208,14 @@
 			path = Sources/act;
 			sourceTree = "<group>";
 		};
+		918B3A332380B6FC00AD3F19 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				918B3A342380B6FC00AD3F19 /* Base.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		91EA8048204DFAC700A557AB /* ExampleHost */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,23 +226,6 @@
 			);
 			name = ExampleHost;
 			path = Sources/ExampleHost;
-			sourceTree = "<group>";
-		};
-		91EA805A204DFB7300A557AB /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				91EA805B204DFB8800A557AB /* Signals.xcodeproj */,
-			);
-			name = Dependencies;
-			sourceTree = "<group>";
-		};
-		91EA805C204DFB8800A557AB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				914DF34C20506A310068823B /* Signals.framework */,
-				914DF34E20506A310068823B /* SignalsTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		91EA8085204DFEC800A557AB /* ExampleActor */ = {
@@ -299,7 +266,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				914DF34820506A310068823B /* PBXTargetDependency */,
 				91D1CFB72015A0C000BC65A3 /* PBXTargetDependency */,
 			);
 			name = ActorProcess;
@@ -368,7 +334,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Doug Russell";
 				TargetAttributes = {
 					911EF56320156BAF00CA3E0E = {
@@ -397,16 +363,11 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 911EF55A20156BAE00CA3E0E;
 			productRefGroup = 911EF56520156BAF00CA3E0E /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 91EA805C204DFB8800A557AB /* Products */;
-					ProjectRef = 91EA805B204DFB8800A557AB /* Signals.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				911EF56320156BAF00CA3E0E /* ActorProcess */,
@@ -416,23 +377,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		914DF34C20506A310068823B /* Signals.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Signals.framework;
-			remoteRef = 914DF34B20506A310068823B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		914DF34E20506A310068823B /* SignalsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SignalsTests.xctest;
-			remoteRef = 914DF34D20506A310068823B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		911EF56220156BAF00CA3E0E /* Resources */ = {
@@ -458,7 +402,6 @@
 			files = (
 				9160F040204CB70E0088527F /* AgentMessaging.swift in Sources */,
 				9160F043204CB70E0088527F /* AgentConnection.swift in Sources */,
-				9160F03E204CB70E0088527F /* KernelQueue.swift in Sources */,
 				9160F03F204CB70E0088527F /* ActorProcess.swift in Sources */,
 				9160F041204CB70E0088527F /* ProcessMonitor.swift in Sources */,
 				9160F03D204CB70E0088527F /* Security.swift in Sources */,
@@ -504,11 +447,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		914DF34820506A310068823B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Signals;
-			targetProxy = 914DF34720506A310068823B /* PBXContainerItemProxy */;
-		};
 		9170736F204E452C00F32D31 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 91EA8078204DFE9D00A557AB /* ExampleActor */;
@@ -534,6 +472,7 @@
 /* Begin XCBuildConfiguration section */
 		911EF56A20156BAF00CA3E0E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 918B3A342380B6FC00AD3F19 /* Base.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -595,6 +534,7 @@
 		};
 		911EF56B20156BAF00CA3E0E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 918B3A342380B6FC00AD3F19 /* Base.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -665,7 +605,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -687,7 +626,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rustle.speakup.ActorProcess;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -695,11 +633,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -707,30 +645,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		91EA8045204DFAB000A557AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../$(CONFIGURATION)/ExampleActor.xpc/Contents/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		91EA8046204DFAB000A557AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../$(CONFIGURATION)/ExampleActor.xpc/Contents/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -738,6 +676,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ActorProcess.xcodeproj/ExampleActor_Info.plist;
@@ -745,7 +684,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rustle.speakup.ExampleActor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -753,6 +691,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ActorProcess.xcodeproj/ExampleActor_Info.plist;
@@ -760,7 +699,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rustle.speakup.ExampleActor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

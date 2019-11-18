@@ -1,13 +1,13 @@
 //
 //  ActorConnection.swift
 //
-//  Copyright © 2018 Doug Russell. All rights reserved.
+//  Copyright © 2018-2019 Doug Russell. All rights reserved.
 //
 
 import Foundation
-import Signals
+import Combine
 
-public class ActorConnection<ProxyType> {
+public class ActorConnection<ProxyType>: ObservableObject {
     public let identifier: String
     public private(set) var configuration: Configuration<ProxyType>
     public var proxy: ProxyType? {
@@ -29,12 +29,7 @@ public class ActorConnection<ProxyType> {
         case connected
         case exited(Exit)
     }
-    public private(set) var state = State.new {
-        didSet {
-            stateSignal⏦state
-        }
-    }
-    public var stateSignal = Signal<State>()
+    @Published public private(set) var state = State.new
     private let process: Process
     private var monitor: ProcessMonitor?
     private var launchTime: CFAbsoluteTime?
@@ -129,7 +124,7 @@ extension ActorConnection : CustomDebugStringConvertible {
 }
 
 public extension ActorConnection {
-    public struct Configuration<ProxyType> {
+    struct Configuration<ProxyType> {
         public var interface: NSXPCInterface {
             return impl.interface
         }

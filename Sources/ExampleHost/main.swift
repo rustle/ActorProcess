@@ -9,18 +9,23 @@ import ActorProcess
 
 let serviceManager = ExampleServiceManager(identifier: "example")
 let service = serviceManager.connect(identifier: 10)
-service.connection.stateSignal.subscribe { [weak service] state in
-    switch state {
-    case .new:
-        break
-    case .running:
-        break
-    case .connected:
-        service?.connection.proxy?.exampleMessage()
-    case .exited(_):
-        break
+_ = service
+    .connection
+    .$state
+    .receive(on: DispatchQueue.global())
+    .sink { [weak service] state in
+        switch state {
+        case .new:
+            break
+        case .running:
+            break
+        case .connected:
+            service?.connection.proxy?.exampleMessage()
+            service?.connection.terminate()
+        case .exited(_):
+            break
+        }
     }
-}.queue(DispatchQueue.global())
 withExtendedLifetime(serviceManager) {
     dispatchMain()
 }

@@ -1,7 +1,7 @@
 //
 //  Agent.swift
 //
-//  Copyright © 2018 Doug Russell. All rights reserved.
+//  Copyright © 2018-2019 Doug Russell. All rights reserved.
 //
 
 import Foundation
@@ -64,7 +64,7 @@ public class Agent : NSObject, AgentMessaging, NSXPCListenerDelegate {
     }
     private override init() {
         let arguments = ProcessInfo.processInfo.arguments
-        guard var auditIndex = arguments.index(where: { $0 == "--auditSessionIdentifier" }) else {
+        guard var auditIndex = arguments.firstIndex(where: { $0 == "--auditSessionIdentifier" }) else {
             exit(EXIT_FAILURE)
         }
         auditIndex += 1
@@ -75,7 +75,7 @@ public class Agent : NSObject, AgentMessaging, NSXPCListenerDelegate {
             exit(EXIT_FAILURE)
         }
         auditSessionIdentifier = audit
-        guard var nameIndex = arguments.index(where: { $0 == "--machServiceName" }) else {
+        guard var nameIndex = arguments.firstIndex(where: { $0 == "--machServiceName" }) else {
             exit(EXIT_FAILURE)
         }
         nameIndex += 1

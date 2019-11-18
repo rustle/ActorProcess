@@ -1,66 +1,37 @@
 //
 //  ProcessMonitor.swift
 //
-//  Copyright © 2018 Doug Russell. All rights reserved.
+//  Copyright © 2018-2019 Doug Russell. All rights reserved.
 //
 
 import Foundation
 
-fileprivate func processMonitorCallback(fileDescriptor: CFFileDescriptor?, options: CFOptionFlags, context: UnsafeMutableRawPointer?) {
-    guard let context = context else {
-        return
-    }
-    let monitor = context.load(as: ProcessMonitor.self)
-    if let didExit = monitor.didExit {
-        didExit(monitor)
-    }
-}
-
 class ProcessMonitor {
     private let process: Process
-    private var unsafePointer: UnsafeMutablePointer<ProcessMonitor>?
     var didExit: ((ProcessMonitor) -> Void)?
     init(process: Process) {
         self.process = process
     }
-    deinit {
-#if swift(>=4.1)
-        unsafePointer?.deinitialize(count: 1)
-        unsafePointer?.deallocate()
-#else
-        unsafePointer?.deinitialize()
-        unsafePointer?.deallocate(capacity: 1)
-#endif
-    }
-    private var queue: KernelQueue?
-    private var fileDescriptor: CFFileDescriptor?
-    private var runLoopSource: CFRunLoopSource?
+    private var source: DispatchSourceProcess?
     func schedule() {
-        let pointer = UnsafeMutablePointer<ProcessMonitor>.allocate(capacity: 1)
-        pointer.initialize(to: self)
-        unsafePointer = pointer
-        let queue = KernelQueue()
-        let change = KernelEvent(identifer: Int(process.processIdentifier), filter: EVFILT_PROC, flags: EV_ADD | EV_RECEIPT, filterFlags: NOTE_EXIT, filterData: 0, userData: nil)
-        queue.event(change: change, event: change)
-        let fileDescriptor = queue.fileDescriptor(callback: processMonitorCallback, info: pointer)
-        guard let runLoopSource = CFFileDescriptorCreateRunLoopSource(kCFAllocatorDefault, fileDescriptor, 0) else {
-            return
+        source = DispatchSource
+            .makeProcessSource(identifier: pid_t(process.processIdentifier),
+                               eventMask: .exit,
+                               queue: .main)
+        source?.setEventHandler { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.didExit?(self)
+            self.unschedule()
         }
-        self.queue = queue
-        self.fileDescriptor = fileDescriptor
-        self.runLoopSource = runLoopSource
-        CFRunLoopAddSource(CFRunLoopGetMain(), runLoopSource, .defaultMode)
-        CFFileDescriptorEnableCallBacks(fileDescriptor, kCFFileDescriptorReadCallBack)
+        source?.setCancelHandler { [weak self] in
+            self?.didExit = nil
+        }
+        source?.resume()
     }
     func unschedule() {
-        self.queue = nil
-        if let fileDescriptor = fileDescriptor {
-            CFFileDescriptorDisableCallBacks(fileDescriptor, kCFFileDescriptorReadCallBack)
-            self.fileDescriptor = nil
-        }
-        if let runLoopSource = runLoopSource {
-            CFRunLoopRemoveSource(CFRunLoopGetMain(), runLoopSource, .defaultMode)
-            self.runLoopSource = nil
-        }
+        source?.cancel()
+        source = nil
     }
 }

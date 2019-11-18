@@ -1,9 +1,12 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.1
 
 import PackageDescription
 
 let package = Package(
     name: "ActorProcess",
+    platforms: [
+        .macOS(.v10_15),
+    ],
     products: [
         .library(
             name: "ActorProcess",
@@ -18,13 +21,11 @@ let package = Package(
             name: "ExampleActor",
             targets: ["ExampleActor"]),
     ],
-    dependencies: [
-        .package(url: "https://github.com/rustle/Signals.git", .revision("dd050c5aaa8f576e21c4631457e61fde80170cd0")),
-    ],
+    dependencies: [],
     targets: [
         .target(
             name: "ActorProcess",
-            dependencies: ["Signals", "act"]),
+            dependencies: ["act"]),
         .target(
             name: "act",
             dependencies: []),
@@ -38,5 +39,5 @@ let package = Package(
             name: "ActorProcessTests",
             dependencies: ["ActorProcess"]),
     ],
-    swiftLanguageVersions: [4]
+    swiftLanguageVersions: [.v5]
 )
